@@ -108,9 +108,13 @@ const sections = [
 
 export default function PrivacyPage() {
   return (
-    <main className="bg-white text-slate-900">
-      <section className="bg-slate-950">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12 lg:py-24">
+    <main className="min-h-screen overflow-hidden bg-[#070b18] text-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-white/10 bg-[#080e20]">
+        <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-blue-600/20 blur-3xl" />
+        <div className="absolute -bottom-32 left-1/4 h-80 w-80 rounded-full bg-violet-500/15 blur-3xl" />
+
+        <div className="relative mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12 lg:py-24">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-400/10 px-4 py-2 text-sm font-medium text-blue-200">
               <ShieldCheck size={16} />
@@ -123,8 +127,8 @@ export default function PrivacyPage() {
 
             <p className="mt-6 text-lg leading-8 text-slate-300">
               Transparency matters when you trust a company with your
-              information. This policy explains what ShrotiHost
-              collects, how it is used, and the choices available to you.
+              information. This policy explains what ShrotiHost collects,
+              how it is used, and the choices available to you.
             </p>
 
             <p className="mt-6 text-sm text-slate-400">
@@ -134,45 +138,52 @@ export default function PrivacyPage() {
         </div>
       </section>
 
+      {/* Policy content */}
       <section className="mx-auto grid max-w-7xl gap-12 px-6 py-16 sm:px-8 lg:grid-cols-[260px_1fr] lg:px-12">
-        <aside className="h-fit rounded-2xl border border-slate-200 bg-slate-50 p-6 lg:sticky lg:top-24">
-          <h2 className="font-semibold">Related policies</h2>
+        {/* Sidebar */}
+        <aside className="h-fit rounded-2xl border border-white/10 bg-gradient-to-br from-[#14203a] to-[#0d1529] p-6 lg:sticky lg:top-24">
+          <h2 className="font-semibold text-white">Related policies</h2>
 
           <nav className="mt-5 flex flex-col gap-4 text-sm">
             <Link
               href="/terms"
-              className="text-slate-600 hover:text-blue-600"
+              className="text-slate-400 transition hover:text-cyan-300"
             >
               Terms and Conditions
             </Link>
-            <Link href="/privacy" className="font-semibold text-blue-600">
+            <Link
+              href="/privacy"
+              className="font-semibold text-cyan-300"
+            >
               Privacy Policy
             </Link>
             <Link
               href="/refund-policy"
-              className="text-slate-600 hover:text-blue-600"
+              className="text-slate-400 transition hover:text-cyan-300"
             >
               Refund Policy
             </Link>
             <Link
               href="/acceptable-use"
-              className="text-slate-600 hover:text-blue-600"
+              className="text-slate-400 transition hover:text-cyan-300"
             >
               Acceptable Use Policy
             </Link>
           </nav>
 
-          <div className="mt-8 border-t border-slate-200 pt-6">
-            <div className="flex items-center gap-2 text-sm font-semibold">
-              <Headphones size={17} className="text-blue-600" />
+          <div className="mt-8 border-t border-white/10 pt-6">
+            <div className="flex items-center gap-2 text-sm font-semibold text-white">
+              <Headphones size={17} className="text-blue-400" />
               Privacy questions?
             </div>
-            <p className="mt-3 text-sm leading-6 text-slate-600">
+
+            <p className="mt-3 text-sm leading-6 text-slate-400">
               Contact the support team for privacy-related requests.
             </p>
+
             <a
               href="mailto:support@shrotihost.in?subject=Privacy%20request"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-blue-400 transition hover:text-cyan-300"
             >
               Send a request
               <ArrowRight size={15} />
@@ -180,9 +191,10 @@ export default function PrivacyPage() {
           </div>
         </aside>
 
+        {/* Main content */}
         <div className="min-w-0">
-          <div className="rounded-2xl border border-blue-100 bg-blue-50 p-6">
-            <p className="text-sm leading-7 text-slate-700">
+          <div className="rounded-2xl border border-blue-400/20 bg-gradient-to-br from-blue-500/10 to-violet-500/5 p-6">
+            <p className="text-sm leading-7 text-slate-300">
               ShrotiHost states that it collects information needed to
               operate its hosting services and does not sell personal
               data. This policy should be read together with the
@@ -197,15 +209,15 @@ export default function PrivacyPage() {
               return (
                 <section
                   key={section.title}
-                  className="border-b border-slate-100 pb-9 last:border-0"
+                  className="border-b border-white/10 pb-9 last:border-0"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-400/20 bg-blue-500/15 text-blue-300">
                       <Icon size={20} />
                     </div>
 
                     <div className="min-w-0">
-                      <h2 className="text-xl font-bold tracking-tight">
+                      <h2 className="text-xl font-bold tracking-tight text-white">
                         {section.title}
                       </h2>
 
@@ -213,7 +225,7 @@ export default function PrivacyPage() {
                         {section.paragraphs.map((paragraph) => (
                           <p
                             key={paragraph}
-                            className="text-sm leading-7 text-slate-600 sm:text-base"
+                            className="text-sm leading-7 text-slate-400 sm:text-base"
                           >
                             {paragraph}
                           </p>
@@ -226,12 +238,13 @@ export default function PrivacyPage() {
             })}
           </div>
 
-          <div className="mt-4 rounded-2xl border border-slate-200 p-6 sm:p-8">
-            <h2 className="text-xl font-bold">
+          {/* Contact */}
+          <div className="mt-4 rounded-2xl border border-white/10 bg-gradient-to-br from-[#14203a] to-[#0d1529] p-6 sm:p-8">
+            <h2 className="text-xl font-bold text-white">
               10. Contact for privacy requests
             </h2>
 
-            <p className="mt-3 text-sm leading-7 text-slate-600">
+            <p className="mt-3 text-sm leading-7 text-slate-400">
               For questions, access requests, corrections, or other
               privacy-related concerns, use one of these official
               channels:
@@ -240,7 +253,7 @@ export default function PrivacyPage() {
             <div className="mt-5 space-y-4 text-sm">
               <a
                 href="mailto:support@shrotihost.in?subject=Privacy%20request"
-                className="flex items-center gap-3 text-blue-600 hover:underline"
+                className="flex items-center gap-3 text-blue-400 transition hover:text-cyan-300 hover:underline"
               >
                 <Mail size={17} />
                 support@shrotihost.in
@@ -250,7 +263,7 @@ export default function PrivacyPage() {
                 href="https://wa.me/919582129099"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-blue-600 hover:underline"
+                className="flex items-center gap-3 text-blue-400 transition hover:text-cyan-300 hover:underline"
               >
                 <Headphones size={17} />
                 +91 95821 29099
@@ -260,7 +273,7 @@ export default function PrivacyPage() {
                 href="https://portal.shrotihost.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-blue-600 hover:underline"
+                className="flex items-center gap-3 text-blue-400 transition hover:text-cyan-300 hover:underline"
               >
                 <LockKeyhole size={17} />
                 Customer support portal
