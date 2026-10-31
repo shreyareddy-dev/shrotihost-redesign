@@ -69,6 +69,34 @@ const benefits = [
   },
 ];
 
+const faqs = [
+  {
+    question: "What is a domain name?",
+    answer:
+      "A domain name is the address people use to access your website, such as example.com.",
+  },
+  {
+    question: "Can I register any domain name?",
+    answer:
+      "A domain must meet the relevant registry requirements and must be available for registration. Some extensions also have eligibility restrictions.",
+  },
+  {
+    question: "What happens after I register a domain?",
+    answer:
+      "You can configure DNS records to point your domain to a hosting server, website or other online service.",
+  },
+  {
+    question: "Can I transfer an existing domain?",
+    answer:
+      "Domain transfers depend on the extension, registrar rules, domain status and applicable transfer requirements. Contact the team to confirm the process.",
+  },
+  {
+    question: "Does this search show live availability?",
+    answer:
+      "No. This redesigned page validates the format of a domain name only. It does not query a registrar or confirm availability.",
+  },
+];
+
 function isValidDomain(value: string) {
   const domain = value.trim().toLowerCase();
 
@@ -101,9 +129,9 @@ export default function DomainsPage() {
   }
 
   return (
-    <main className="overflow-hidden bg-white text-slate-900">
+    <main className="overflow-hidden bg-[#070b18] text-white">
       {/* HERO AND DOMAIN SEARCH */}
-      <section className="relative isolate bg-slate-950 text-white">
+      <section className="relative isolate overflow-hidden bg-slate-950 text-white">
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute -right-32 -top-40 h-[480px] w-[480px] rounded-full bg-blue-600/20 blur-[120px]" />
           <div className="absolute -bottom-48 left-0 h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-[120px]" />
@@ -162,7 +190,10 @@ export default function DomainsPage() {
             </form>
 
             {result === "invalid" && (
-              <p role="alert" className="mx-auto mt-4 max-w-2xl text-sm font-medium text-rose-300">
+              <p
+                role="alert"
+                className="mx-auto mt-4 max-w-2xl text-sm font-medium text-rose-300"
+              >
                 Please enter a valid domain name, such as example.com.
               </p>
             )}
@@ -209,74 +240,84 @@ export default function DomainsPage() {
       </section>
 
       {/* EXTENSIONS */}
-      <section className="container-shell section-spacing">
-        <div className="max-w-2xl">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
-            Explore extensions
-          </p>
-          <h2 className="section-heading mt-4">
-            Find the right domain extension.
-          </h2>
-          <p className="mt-5 leading-8 text-slate-600">
-            Different extensions suit different audiences and purposes.
-            Explore some popular options before choosing your domain.
+      <section className="relative overflow-hidden bg-[#090f20]">
+        <div className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-blue-600/10 blur-[120px]" />
+
+        <div className="container-shell section-spacing relative">
+          <div className="max-w-2xl">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+              Explore extensions
+            </p>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Find the right domain extension.
+            </h2>
+            <p className="mt-5 leading-8 text-slate-400">
+              Different extensions suit different audiences and purposes.
+              Explore some popular options before choosing your domain.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {extensions.map((extension) => (
+              <button
+                key={extension.name}
+                type="button"
+                onClick={() => {
+                  setDomain(`yourname${extension.name}`);
+                  setResult("");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#111b32] p-7 text-left transition duration-300 hover:-translate-y-1 hover:border-blue-400/50 hover:bg-[#162342] hover:shadow-xl hover:shadow-blue-950/30"
+              >
+                <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-blue-500/10 blur-3xl transition group-hover:bg-cyan-400/20" />
+
+                <div className="relative flex items-center justify-between gap-3">
+                  <span className="text-3xl font-extrabold tracking-tight text-white">
+                    {extension.name}
+                  </span>
+                  <span className="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-cyan-300">
+                    {extension.category}
+                  </span>
+                </div>
+
+                <p className="relative mt-5 min-h-14 text-sm leading-7 text-slate-400">
+                  {extension.description}
+                </p>
+
+                <span className="relative mt-5 inline-flex items-center gap-2 text-sm font-bold text-blue-300 transition group-hover:text-cyan-300">
+                  Try this extension
+                  <ArrowRight
+                    size={16}
+                    className="transition group-hover:translate-x-1"
+                  />
+                </span>
+
+                <span className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-blue-500 to-cyan-400 transition-all duration-300 group-hover:w-full" />
+              </button>
+            ))}
+          </div>
+
+          <p className="mt-7 text-sm leading-6 text-slate-500">
+            Extension cards are illustrative. Actual registration eligibility,
+            availability and pricing depend on the registrar and applicable
+            domain registry rules.
           </p>
         </div>
-
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {extensions.map((extension) => (
-            <button
-              key={extension.name}
-              type="button"
-              onClick={() => {
-                setDomain(`yourname${extension.name}`);
-                setResult("");
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="group rounded-2xl border border-slate-200 bg-white p-7 text-left transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-3xl font-extrabold tracking-tight text-slate-950">
-                  {extension.name}
-                </span>
-                <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-                  {extension.category}
-                </span>
-              </div>
-
-              <p className="mt-5 min-h-14 text-sm leading-7 text-slate-600">
-                {extension.description}
-              </p>
-
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-blue-700">
-                Try this extension
-                <ArrowRight
-                  size={16}
-                  className="transition group-hover:translate-x-1"
-                />
-              </span>
-            </button>
-          ))}
-        </div>
-
-        <p className="mt-7 text-sm leading-6 text-slate-500">
-          Extension cards are illustrative. Actual registration eligibility,
-          availability and pricing depend on the registrar and applicable
-          domain registry rules.
-        </p>
       </section>
 
       {/* BENEFITS */}
-      <section className="bg-slate-50">
-        <div className="container-shell section-spacing">
+      <section className="relative overflow-hidden bg-[#070b18]">
+        <div className="pointer-events-none absolute -right-40 top-10 h-96 w-96 rounded-full bg-violet-600/10 blur-[130px]" />
+
+        <div className="container-shell section-spacing relative">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
               Domain essentials
             </p>
-            <h2 className="section-heading mt-4">
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               More than just a domain name.
             </h2>
-            <p className="mt-5 leading-8 text-slate-600">
+            <p className="mt-5 leading-8 text-slate-400">
               A domain is the starting point of your online presence.
               Understand the essentials of managing it.
             </p>
@@ -289,17 +330,17 @@ export default function DomainsPage() {
               return (
                 <div
                   key={benefit.title}
-                  className="rounded-2xl border border-slate-200 bg-white p-8"
+                  className="group rounded-2xl border border-white/10 bg-gradient-to-br from-[#131e38] to-[#0d1428] p-8 transition duration-300 hover:-translate-y-1 hover:border-blue-400/40 hover:shadow-xl hover:shadow-blue-950/20"
                 >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-700">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-500/10 text-cyan-300 transition group-hover:bg-blue-500/20">
                     <Icon size={26} />
                   </div>
 
-                  <h3 className="mt-7 text-xl font-bold">
+                  <h3 className="mt-7 text-xl font-bold text-white">
                     {benefit.title}
                   </h3>
 
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-7 text-slate-400">
                     {benefit.description}
                   </p>
                 </div>
@@ -310,124 +351,113 @@ export default function DomainsPage() {
       </section>
 
       {/* DOMAIN AND HOSTING */}
-      <section className="container-shell section-spacing">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
-              Start building
-            </p>
-            <h2 className="section-heading mt-4">
-              Your domain. Your hosting. One website.
-            </h2>
-            <p className="mt-5 leading-8 text-slate-600">
-              Once you have a domain name, the next step is connecting
-              it to a hosting service. Choose a plan based on your
-              website&apos;s needs.
-            </p>
+      <section className="relative overflow-hidden bg-[#090f20]">
+        <div className="pointer-events-none absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-blue-600/10 blur-[130px]" />
 
-            <Link
-              href="/hosting/shared"
-              className="mt-8 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-4 font-semibold text-white transition hover:bg-blue-700"
-            >
-              Explore hosting plans
-              <ArrowRight size={18} />
-            </Link>
-          </div>
+        <div className="container-shell section-spacing relative">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                Start building
+              </p>
+              <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                Your domain. Your hosting. One website.
+              </h2>
+              <p className="mt-5 leading-8 text-slate-400">
+                Once you have a domain name, the next step is connecting
+                it to a hosting service. Choose a plan based on your
+                website&apos;s needs.
+              </p>
 
-          <div className="rounded-3xl bg-slate-950 p-8 text-white sm:p-10">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/20 text-blue-300">
-              <Globe2 size={28} />
+              <Link
+                href="/hosting/shared"
+                className="mt-8 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-4 font-semibold text-white transition hover:bg-blue-500"
+              >
+                Explore hosting plans
+                <ArrowRight size={18} />
+              </Link>
             </div>
-            <h3 className="mt-7 text-2xl font-bold">
-              From name to website
-            </h3>
 
-            <div className="mt-8 space-y-5">
-              {[
-                {
-                  number: "01",
-                  title: "Choose a domain",
-                  description: "Find a name that represents your project.",
-                },
-                {
-                  number: "02",
-                  title: "Select hosting",
-                  description: "Choose resources suitable for your website.",
-                },
-                {
-                  number: "03",
-                  title: "Connect and launch",
-                  description: "Configure DNS and publish your website.",
-                },
-              ].map((step) => (
-                <div key={step.number} className="flex gap-4">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/10 text-sm font-bold text-cyan-300">
-                    {step.number}
-                  </span>
-                  <div>
-                    <h4 className="font-bold">{step.title}</h4>
-                    <p className="mt-1 text-sm leading-6 text-slate-400">
-                      {step.description}
-                    </p>
-                  </div>
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#182b52] via-[#101b35] to-[#0b1123] p-8 text-white sm:p-10">
+              <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-blue-500/20 blur-[80px]" />
+
+              <div className="relative">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-300/20 bg-blue-500/15 text-cyan-300">
+                  <Globe2 size={28} />
                 </div>
-              ))}
+
+                <h3 className="mt-7 text-2xl font-bold text-white">
+                  From name to website
+                </h3>
+
+                <div className="mt-8 space-y-5">
+                  {[
+                    {
+                      number: "01",
+                      title: "Choose a domain",
+                      description: "Find a name that represents your project.",
+                    },
+                    {
+                      number: "02",
+                      title: "Select hosting",
+                      description: "Choose resources suitable for your website.",
+                    },
+                    {
+                      number: "03",
+                      title: "Connect and launch",
+                      description: "Configure DNS and publish your website.",
+                    },
+                  ].map((step) => (
+                    <div key={step.number} className="flex gap-4">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/10 text-sm font-bold text-cyan-300">
+                        {step.number}
+                      </span>
+
+                      <div>
+                        <h4 className="font-bold text-white">
+                          {step.title}
+                        </h4>
+                        <p className="mt-1 text-sm leading-6 text-slate-400">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="bg-slate-50">
-        <div className="container-shell section-spacing">
+      <section className="relative overflow-hidden bg-[#070b18]">
+        <div className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-violet-600/10 blur-[130px]" />
+
+        <div className="container-shell section-spacing relative">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
               Frequently asked questions
             </p>
-            <h2 className="section-heading mt-4">
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               Domain questions, answered.
             </h2>
           </div>
 
           <div className="mx-auto mt-12 max-w-3xl space-y-4">
-            {[
-              {
-                question: "What is a domain name?",
-                answer:
-                  "A domain name is the address people use to access your website, such as example.com.",
-              },
-              {
-                question: "Can I register any domain name?",
-                answer:
-                  "A domain must meet the relevant registry requirements and must be available for registration. Some extensions also have eligibility restrictions.",
-              },
-              {
-                question: "What happens after I register a domain?",
-                answer:
-                  "You can configure DNS records to point your domain to a hosting server, website or other online service.",
-              },
-              {
-                question: "Can I transfer an existing domain?",
-                answer:
-                  "Domain transfers depend on the extension, registrar rules, domain status and applicable transfer requirements. Contact the team to confirm the process.",
-              },
-              {
-                question: "Does this search show live availability?",
-                answer:
-                  "No. This redesigned page validates the format of a domain name only. It does not query a registrar or confirm availability.",
-              },
-            ].map((faq) => (
+            {faqs.map((faq) => (
               <details
                 key={faq.question}
-                className="group rounded-2xl border border-slate-200 bg-white p-6"
+                className="group rounded-2xl border border-white/10 bg-[#111b32] p-6 transition hover:border-blue-400/30"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-slate-900">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-white">
                   {faq.question}
-                  <span className="text-xl text-blue-600 transition group-open:rotate-45">
+                  <span className="text-xl text-cyan-400 transition group-open:rotate-45">
                     +
                   </span>
                 </summary>
-                <p className="mt-4 pr-8 text-sm leading-7 text-slate-600">
+
+                <p className="mt-4 pr-8 text-sm leading-7 text-slate-400">
                   {faq.answer}
                 </p>
               </details>
@@ -437,41 +467,43 @@ export default function DomainsPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="container-shell section-spacing">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-700 via-blue-800 to-slate-950 px-7 py-14 text-center text-white sm:px-14 sm:py-20">
-          <div className="absolute -right-20 -top-32 h-80 w-80 rounded-full bg-cyan-400/20 blur-3xl" />
-          <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-blue-400/20 blur-3xl" />
+      <section className="bg-[#090f20] px-4 py-10 sm:py-16">
+        <div className="container-shell">
+          <div className="relative overflow-hidden rounded-3xl border border-blue-300/20 bg-gradient-to-br from-blue-700 via-blue-800 to-slate-950 px-7 py-14 text-center text-white shadow-2xl shadow-blue-950/30 sm:px-14 sm:py-20">
+            <div className="absolute -right-20 -top-32 h-80 w-80 rounded-full bg-cyan-400/20 blur-3xl" />
+            <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-blue-400/20 blur-3xl" />
 
-          <div className="relative mx-auto max-w-2xl">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10">
-              <Sparkles size={27} />
-            </div>
+            <div className="relative mx-auto max-w-2xl">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10">
+                <Sparkles size={27} />
+              </div>
 
-            <h2 className="mt-7 text-3xl font-extrabold tracking-tight sm:text-5xl">
-              Your next idea needs a name.
-            </h2>
+              <h2 className="mt-7 text-3xl font-extrabold tracking-tight sm:text-5xl">
+                Your next idea needs a name.
+              </h2>
 
-            <p className="mx-auto mt-5 max-w-xl leading-8 text-blue-100">
-              Find a domain, explore hosting and take the first
-              step towards building something online.
-            </p>
+              <p className="mx-auto mt-5 max-w-xl leading-8 text-blue-100">
+                Find a domain, explore hosting and take the first
+                step towards building something online.
+              </p>
 
-            <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-4 font-bold !text-blue-800 transition hover:bg-blue-50"
-              >
-                Contact our team
-                <ArrowRight size={18} />
-              </Link>
+              <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-4 font-bold !text-blue-800 transition hover:bg-blue-50"
+                >
+                  Contact our team
+                  <ArrowRight size={18} />
+                </Link>
 
-              <Link
-                href="/hosting/shared"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 px-7 py-4 font-semibold text-white transition hover:bg-white/10"
-              >
-                View hosting plans
-                <ArrowUpRight size={18} />
-              </Link>
+                <Link
+                  href="/hosting/shared"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 px-7 py-4 font-semibold text-white transition hover:bg-white/10"
+                >
+                  View hosting plans
+                  <ArrowUpRight size={18} />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
