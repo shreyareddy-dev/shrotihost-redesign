@@ -23,6 +23,7 @@ export const metadata: Metadata = {
 const plans = [
   {
     name: "Launch",
+    slug: "launch",
     tagline: "Start something great.",
     price: "49",
     cpu: "1 Core",
@@ -45,6 +46,7 @@ const plans = [
   },
   {
     name: "Grow",
+    slug: "grow",
     tagline: "Everything your growing website needs.",
     price: "79",
     cpu: "1.5 Cores",
@@ -66,6 +68,7 @@ const plans = [
   },
   {
     name: "Turbo",
+    slug: "turbo",
     tagline: "More power for growing websites.",
     price: "149",
     cpu: "2 Cores",
@@ -87,6 +90,7 @@ const plans = [
   },
   {
     name: "Infinity",
+    slug: "infinity",
     tagline: "Maximum shared-hosting power.",
     price: "249",
     cpu: "3 Cores",
@@ -425,17 +429,19 @@ export default function SharedHostingPage() {
                   </ul>
                 </div>
 
-                <Link
-                  href="/contact"
+                <a
+                  href={`https://portal.shrotihost.in/index.php/store/shared-hosting/${plan.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`mt-auto flex min-h-12 w-full min-w-0 items-center justify-center gap-2 rounded-xl px-3 py-3.5 text-center text-sm font-bold transition sm:px-5 ${
                     plan.popular
                       ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-[#061126] shadow-lg shadow-blue-500/20 hover:from-cyan-300 hover:to-blue-400"
                       : "border border-white/20 bg-white/5 text-white hover:border-cyan-300/50 hover:bg-white/10"
                   }`}
                 >
-                  <span>Enquire about {plan.name}</span>
+                  <span>Order Now</span>
                   <ArrowRight size={17} className="shrink-0" />
-                </Link>
+                </a>
               </article>
             ))}
           </div>
