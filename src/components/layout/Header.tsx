@@ -21,8 +21,16 @@ const navigation = [
     links: [
       { label: "Shared Hosting", href: "/hosting/shared" },
       { label: "WordPress Hosting", href: "/hosting/wordpress" },
-      { label: "Unlimited Hosting", href: "/hosting/unlimited" },
-      { label: "Reseller Hosting", href: "/hosting/reseller" },
+      {
+        label: "Unlimited Hosting",
+        href: "https://portal.shrotihost.in/index.php/store/unlimited-hosting",
+        external: true,
+      },
+      {
+        label: "Reseller Hosting",
+        href: "https://portal.shrotihost.in/index.php/store/reseller-hosting",
+        external: true,
+      },
       { label: "Master Reseller", href: "/hosting/master-reseller" },
       { label: "VPS Hosting", href: "/hosting/vps" },
     ],
@@ -72,7 +80,10 @@ export default function Header() {
           aria-label="ShrotiHost home"
           onClick={closeMobileMenu}
         >
-          Shroti<span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-violet-400 bg-clip-text text-transparent">Host</span>
+          Shroti
+          <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-violet-400 bg-clip-text text-transparent">
+            Host
+          </span>
           <span className="ml-1 align-top text-[10px] font-semibold text-slate-500">
             .in
           </span>
@@ -110,19 +121,40 @@ export default function Header() {
                   </div>
 
                   <div className="mt-1">
-                    {item.links.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="group/link flex items-center justify-between rounded-xl px-3 py-3 text-sm font-medium text-slate-300 transition hover:bg-blue-500/10 hover:text-cyan-300"
-                      >
-                        {link.label}
-                        <ArrowUpRight
-                          size={14}
-                          className="opacity-0 transition group-hover/link:translate-x-0.5 group-hover/link:opacity-100"
-                        />
-                      </Link>
-                    ))}
+                    {item.links.map((link) => {
+                      const linkProps = {
+                        className:
+                          "group/link flex items-center justify-between rounded-xl px-3 py-3 text-sm font-medium text-slate-300 transition hover:bg-blue-500/10 hover:text-cyan-300",
+                      };
+
+                      return link.href.startsWith("https://") ? (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          {...linkProps}
+                        >
+                          {link.label}
+                          <ArrowUpRight
+                            size={14}
+                            className="opacity-0 transition group-hover/link:translate-x-0.5 group-hover/link:opacity-100"
+                          />
+                        </a>
+                      ) : (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          {...linkProps}
+                        >
+                          {link.label}
+                          <ArrowUpRight
+                            size={14}
+                            className="opacity-0 transition group-hover/link:translate-x-0.5 group-hover/link:opacity-100"
+                          />
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -211,16 +243,29 @@ export default function Header() {
 
                   {isActive && (
                     <div className="space-y-1 pb-3 pl-9">
-                      {item.links.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          onClick={closeMobileMenu}
-                          className="block rounded-lg px-3 py-3 text-sm font-medium text-slate-400 transition hover:bg-blue-500/10 hover:text-cyan-300"
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
+                      {item.links.map((link) =>
+                        link.href.startsWith("https://") ? (
+                          <a
+                            key={link.href}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={closeMobileMenu}
+                            className="block rounded-lg px-3 py-3 text-sm font-medium text-slate-400 transition hover:bg-blue-500/10 hover:text-cyan-300"
+                          >
+                            {link.label}
+                          </a>
+                        ) : (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={closeMobileMenu}
+                            className="block rounded-lg px-3 py-3 text-sm font-medium text-slate-400 transition hover:bg-blue-500/10 hover:text-cyan-300"
+                          >
+                            {link.label}
+                          </Link>
+                        )
+                      )}
                     </div>
                   )}
                 </div>
