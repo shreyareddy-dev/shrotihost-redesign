@@ -449,7 +449,7 @@ export default function ResellerHostingPage() {
                 </ul>
 
                 <a
-                  href="https://portal.shrotihost.in"
+                  href="https://portal.shrotihost.in/index.php/store/reseller-hosting"
                   target="_blank"
                   rel="noreferrer"
                   className={`inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-bold transition ${
