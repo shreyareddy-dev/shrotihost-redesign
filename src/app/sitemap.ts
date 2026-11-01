@@ -1,7 +1,7 @@
 
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://shrotihost.in";
+const BASE_URL = "https://shrotihost-redesign.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [

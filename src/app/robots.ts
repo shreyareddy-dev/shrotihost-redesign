@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://shrotihost.in/sitemap.xml",
+    sitemap: "https://shrotihost-redesign.vercel.app/sitemap.xml",
   };
 }
