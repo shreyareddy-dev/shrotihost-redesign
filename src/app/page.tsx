@@ -128,10 +128,9 @@ const journeySteps = [
 
 export default function HomePage() {
   return (
-    <>
+    <main id="main-content">
       {/* HERO SECTION */}
       <section className="relative isolate overflow-hidden bg-[#080D2B] text-white">
-        {/* Vibrant blue, purple, cyan and pink background */}
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_10%_20%,rgba(37,99,235,0.65),transparent_45%),radial-gradient(ellipse_at_90%_15%,rgba(124,58,237,0.60),transparent_42%),radial-gradient(ellipse_at_55%_85%,rgba(6,182,212,0.30),transparent_48%),radial-gradient(ellipse_at_80%_75%,rgba(219,39,119,0.20),transparent_42%)]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#101C50]/50 via-transparent to-[#160B38]/60" />
         <div className="pointer-events-none absolute -left-32 top-1/4 size-80 rounded-full bg-blue-500/30 blur-[100px]" />
@@ -455,6 +454,6 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-    </>
+    </main>
   );
 }
