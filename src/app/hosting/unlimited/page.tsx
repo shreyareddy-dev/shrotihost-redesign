@@ -433,7 +433,7 @@ export default function UnlimitedHostingPage() {
                 </ul>
 
                 <a
-                  href="https://portal.shrotihost.in"
+                  href="https://portal.shrotihost.in/index.php/store/unlimited-hosting"
                   target="_blank"
                   rel="noreferrer"
                   className={`inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-bold transition ${plan.button}`}
