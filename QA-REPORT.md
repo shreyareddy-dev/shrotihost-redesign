@@ -81,7 +81,7 @@ The tested flows reached the external client portal and retained the selected ho
 | 1280px desktop | Pending verification |
 | 1440px desktop | Pending verification |
 
-The website was also inspected using Chrome DevTools device emulation.
+The website was also inspected using Chrome DevTools device emulation. Representative tablet screenshots are included in the `assessment-screenshots` directory.
 
 ## 6. Browser Checks
 
@@ -99,19 +99,21 @@ The website was also inspected using Chrome DevTools device emulation.
 - Mode: Navigation
 - Device: Emulated Moto G Power
 - Network: Slow 4G throttling
-- Page tested: Homepage
 - Audit date shown by Lighthouse: November 1, 2026
 
 ### Lighthouse Scores
 
-| Category | Score |
-|---|---:|
-| Performance | 98/100 |
-| Accessibility | 94/100 |
-| Best Practices | 100/100 |
-| SEO | 100/100 |
+Three pages were audited independently under the recorded mobile configuration.
 
-### Performance Metrics
+| Page | Performance | Accessibility | Best Practices | SEO |
+|---|---:|---:|---:|---:|
+| Homepage | 98 | 94 | 100 | 100 |
+| Shared Hosting | 84 | 94 | 100 | 100 |
+| Services | 99 | 96 | 100 | 100 |
+
+Scores are page-specific and should not be interpreted as site-wide scores.
+
+### Homepage Performance Metrics
 
 | Metric | Result |
 |---|---:|
@@ -123,17 +125,25 @@ The website was also inspected using Chrome DevTools device emulation.
 
 ### Lighthouse Findings
 
-**Accessibility opportunities:**
+**Accessibility opportunities identified in the homepage audit:**
 - Some foreground and background color combinations have insufficient contrast.
-- The audited homepage was reported as missing a main landmark.
+- The original homepage audit reported a missing main landmark. A main landmark was subsequently added to the homepage.
 - Additional manual accessibility checks are recommended.
 
-**Performance insights:**
+**Performance insights from the homepage audit:**
 - Estimated legacy JavaScript savings: 14 KiB.
 - Estimated unused JavaScript savings: 30 KiB.
 - Four long main-thread tasks were identified.
 
 These findings are recorded for future optimization.
+
+### Audit Evidence
+
+The following Lighthouse screenshots are included in the `assessment-screenshots` directory:
+- `lighthouse-services.png`
+- `lighthouse-shared-hosting.png`
+
+The homepage Lighthouse results and performance metrics are documented above.
 
 ## 8. SEO Verification
 
@@ -177,6 +187,8 @@ GitHub is connected to Vercel for production deployments following updates to th
 
 The ShrotiHost redesign successfully completed production compilation, TypeScript validation, and static page generation.
 
-All six hosting purchase flows were manually tested. The production sitemap and robots.txt were verified, and the homepage achieved Lighthouse scores of 98 for Performance, 94 for Accessibility, 100 for Best Practices, and 100 for SEO under the recorded mobile audit configuration.
+All six hosting purchase flows were manually tested. The production sitemap and robots.txt were verified.
 
-Further improvements can focus on accessibility contrast, semantic landmarks, and additional responsive viewport verification.
+Three pages were audited using Lighthouse under the recorded mobile configuration. The homepage achieved scores of 98 for Performance, 94 for Accessibility, 100 for Best Practices, and 100 for SEO. Shared Hosting achieved 84, 94, 100, and 100 respectively, while Services achieved 99, 96, 100, and 100.
+
+Further improvements can focus on accessibility contrast, additional manual accessibility checks, and responsive verification at the remaining specified viewport sizes.
