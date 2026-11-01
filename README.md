@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ShrotiHost Website Redesign
+
+A responsive, multi-page website redesign for ShrotiHost, focused on presenting web hosting products, domain services, and company information through a modern interface.
+
+**Live Website:** https://shrotihost-redesign.vercel.app  
+**GitHub Repository:** https://github.com/shreyareddy-dev/shrotihost-redesign
+
+## Project Overview
+
+This project redesigns the ShrotiHost website with a consistent visual identity, improved navigation, responsive layouts, and clearer presentation of hosting plans and services.
+
+The website includes product pages, company information, contact details, domain services, blog and policy pages, and links to the external ShrotiHost client portal for hosting purchases.
+
+## Technology Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Lucide React
+- Vercel (deployment)
+
+## Features
+
+- Responsive layouts for desktop, tablet, and mobile screens
+- Shared navigation and footer across website pages
+- Hosting product pages with plan comparisons
+- Shared, WordPress, unlimited, reseller, master reseller, and VPS hosting sections
+- Domain and service information pages
+- Contact page with contact options
+- Blog, careers, portfolio, and company information pages
+- Legal and policy pages
+- External purchase links to the ShrotiHost client portal
+- SEO metadata, sitemap, and robots.txt
+- Custom not-found page
+
+## Website Routes
+
+| Page | Route |
+|---|---|
+| Home | `/` |
+| About | `/about` |
+| Contact | `/contact` |
+| Careers | `/careers` |
+| Portfolio | `/portfolio` |
+| Services | `/services` |
+| Domains | `/domains` |
+| Blog | `/blog` |
+| Offers | `/offers` |
+| Status | `/status` |
+| Shared Hosting | `/hosting/shared` |
+| WordPress Hosting | `/hosting/wordpress` |
+| Unlimited Hosting | `/hosting/unlimited` |
+| Reseller Hosting | `/hosting/reseller` |
+| Master Reseller Hosting | `/hosting/master-reseller` |
+| VPS Hosting | `/hosting/vps` |
+| Terms | `/terms` |
+| Privacy Policy | `/privacy` |
+| Refund Policy | `/refund-policy` |
+| Acceptable Use Policy | `/acceptable-use` |
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js
+- npm
+- Git
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/shreyareddy-dev/shrotihost-redesign.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd shrotihost-redesign
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Production Build
 
-## Learn More
+To create an optimized production build:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To run the production build locally:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run start
+```
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The website is deployed using Vercel and connected to the GitHub repository for deployment on updates to the production branch.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Production URL:** https://shrotihost-redesign.vercel.app
+
+## SEO
+
+The project includes:
+
+- Sitemap: `/sitemap.xml`
+- Robots file: `/robots.txt`
+- Search-engine crawling rules
+- Sitemap references using the deployed Vercel URL
+
+## Purchase Flow
+
+Hosting plan purchase buttons link to the corresponding ShrotiHost client portal pages. The external portal handles the subsequent domain selection and ordering process.
+
+## Notes and Limitations
+
+- The contact form is a frontend demonstration and does not independently transmit or store submissions.
+- The status page is an informational interface, not a live infrastructure monitoring integration.
+- Portfolio content should be understood according to the examples and service descriptions presented on the website, not as independently verified customer case studies.
+- Hosting purchases and account operations are handled by the external client portal.
+
+## Author
+
+**Shreya K Reddy**
+
+GitHub: https://github.com/shreyareddy-dev
+
+---
+
+*Developed as a website redesign assessment project.*
